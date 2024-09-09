@@ -1,0 +1,101 @@
+[
+  {
+    "CustomerID": 1,
+    "CustomerType": "Individual",
+    "FirstName": "Johnson",
+    "LastName": "Doherty",
+    "Email": "john.doe@outlook.com",
+    "DateOfBirth": "1985-10-15",
+    "policies": [
+      {
+        "policyID": "POL12352"
+      }
+    ]
+  },
+  {
+    "CustomerID": 2,
+    "CustomerType": "Individual",
+    "FirstName": "Mike",
+    "LastName": "Knoll",
+    "Email": "mike.knoll@outlook.com",
+    "DateOfBirth": "1985-04-12",
+    "policies": [
+      {
+        "policyID": "POL12345"
+      },
+      {
+        "policyID": "POL12353"
+      }
+    ]
+  },
+  {
+    "CustomerID": 3,
+    "CustomerType": "Individual",
+    "FirstName": "Sam",
+    "LastName": "Turner",
+    "Email": "sam.turner@gmail.com",
+    "DateOfBirth": "1985-04-12",
+    "policies": [
+      {
+        "policyID": "POL12346"
+      },
+      {
+        "policyID": "POL12354"
+      },
+      {
+        "policyID": "POL12348"
+      }
+    ]
+  },
+  {
+    "CustomerID": 4,
+    "CustomerType": "Corporate",
+    "FirstName": "Tim",
+    "LastName": "Mills",
+    "Email": "tim.mills@yahoo.com",
+    "DateOfBirth": "1985-04-12",
+    "Company": "Meta",
+    "policies": [
+      {
+        "policyID": "POL12349"
+      }
+    ]
+  },
+  {
+    "CustomerID": 5,
+    "CustomerType": "Corporate",
+    "FirstName": "Laura",
+    "LastName": "Moon",
+    "Email": "laura.moon@yahoo.com",
+    "DateOfBirth": "1985-04-12",
+    "Company": "Google",
+    "policies": [
+      {
+        "policyID": "POL12347"
+      },
+      {
+        "policyID": "POL12350"
+      }
+    ]
+  },
+  {
+    "CustomerID": 6,
+    "CustomerType": "Corporate",
+    "FirstName": "Joe",
+    "LastName": "Wright",
+    "Email": "joe.wright@gmail.com",
+    "DateOfBirth": "1992-10-13",
+    "Company": "Adobe",
+    "policies": [
+      {
+        "policyID": "POL12351"
+      },
+      {
+        "policyID": "POL12355"
+      },
+      {
+        "policyID": "POL12356"
+      }
+    ]
+  }
+]
