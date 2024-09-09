@@ -1,0 +1,93 @@
+[
+  {
+    "PolicyID": "POL12345",
+    "PolicyType": "Individual",
+    "StartDate": "2024-01-01",
+    "EndDate": "2025-01-01",
+    "Premium": 1200.00
+  },
+  {
+    "PolicyID": "POL12346",
+    "PolicyType": "Individual",
+    "StartDate": "2023-07-15",
+    "EndDate": "2024-07-15",
+    "Premium": 800.00
+  },
+  {
+    "PolicyID": "POL12347",
+    "PolicyType": "Workplace",
+    "StartDate": "2022-10-01",
+    "EndDate": "2023-10-01",
+    "Premium": 1500.00,
+    "Limit": 90000
+  },
+  {
+    "PolicyID": "POL12348",
+    "PolicyType": "Individual",
+    "StartDate": "2023-12-01",
+    "EndDate": "2024-12-01",
+    "Premium": 950.00
+  },
+  {
+    "PolicyID": "POL12349",
+    "PolicyType": "Property",
+    "StartDate": "2023-05-20",
+    "EndDate": "2024-05-20",
+    "Premium": 1300.00,
+    "Limit": 10000
+  },
+  {
+    "PolicyID": "POL12350",
+    "PolicyType": "Casualty",
+    "StartDate": "2022-03-01",
+    "EndDate": "2023-03-01",
+    "Premium": 1100.00,
+    "Limit": 100000
+  },
+  {
+    "PolicyID": "POL12351",
+    "PolicyType": "Workplace",
+    "StartDate": "2024-06-01",
+    "EndDate": "2025-06-01",
+    "Premium": 2000.00,
+    "Limit": 200000
+    
+  },
+  {
+    "PolicyID": "POL12352",
+    "PolicyType": "Individual",
+    "StartDate": "2023-09-10",
+    "EndDate": "2024-09-10",
+    "Premium": 720.00
+  },
+  {
+    "PolicyID": "POL12353",
+    "PolicyType": "Individual",
+    "StartDate": "2023-11-11",
+    "EndDate": "2024-11-11",
+    "Premium": 1800.00
+  },
+  {
+    "PolicyID": "POL12354",
+    "PolicyType": "Individual",
+    "StartDate": "2021-08-08",
+    "EndDate": "2022-08-08",
+    "Premium": 980.00
+  },
+  {
+    "PolicyID": "POL12355",
+    "PolicyType": "Workplace",
+    "StartDate": "2023-04-25",
+    "EndDate": "2024-04-25",
+    "Premium": 1350.00,
+    "Limit": 700000
+  },
+  {
+    "PolicyID": "POL12356",
+    "PolicyType": "Professional",
+    "StartDate": "2022-12-12",
+    "EndDate": "2023-12-12",
+    "Premium": 1120.00,
+    "Limit": 500000
+  }
+]
