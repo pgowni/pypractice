@@ -38,3 +38,19 @@ class Policy:
             "Premium": self.premium
         }
 
+    # @staticmethod
+    # def generate_policy_id(policies):
+    #     dict_policies = []
+
+    #     for obj in policies:
+    #         dict_policies.append(obj.to_dict())
+        
+    #     if not dict_policies:
+    #         return "POL10001"  
+        
+    #     last_policy_id = 0
+    #     for policy in dict_policies:
+    #         last_policy_id = max(last_policy_id, int(policy["PolicyID"][3:]))
+    #     new_policy_id = f"POL{last_policy_id + 1}"
+    #     return new_policy_id
+
