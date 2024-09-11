@@ -13,13 +13,13 @@ class Customer:
     @staticmethod
     def to_obj(data):
         return Customer(
-            id=data['CustomerID'],
-            type=data['CustomerType'],
-            first_name=data['FirstName'],
-            last_name=data['LastName'],
-            email=data['Email'],
-            dob=data['DateOfBirth'],
-            policies = [policy['policyID'] for policy in data["policies"]]
+            id = data['CustomerID'],
+            type = data['CustomerType'],
+            first_name = data['FirstName'],
+            last_name = data['LastName'],
+            email = data['Email'],
+            dob = data['DateOfBirth'],
+            policies = [policy for policy in data["policies"]]
         )
 
     def to_dict(self):
@@ -47,8 +47,6 @@ class Customer:
 
 class Policy:
 
-    curr_policy_id = 'POL12356'
-
     def __init__(self, id, type, start_date, end_date, premium):
         self.id = id
         self.type = type
@@ -74,12 +72,31 @@ class Policy:
             end_date=data['EndDate'],
             premium=data['Premium'],
         )
-    @classmethod
-    def generate_policy_id(cls):
-        id_serial = int(cls.curr_policy_id[3:])
-        id_serial += 1
-        cls.curr_policy_id = cls.curr_policy_id[:3] + str(id_serial)
-        return cls.curr_policy_id
+    # @classmethod
+    # def generate_policy_id():
+    #     print("Before", cls.curr_policy_id)
+    #     id_serial = int(cls.curr_policy_id[3:])
+    #     id_serial += 1
+    #     cls.curr_policy_id = cls.curr_policy_id[:3] + str(id_serial)
+    #     print("After", cls.curr_policy_id)
+    #     return cls.curr_policy_id
+
+    @staticmethod
+    def generate_policy_id():
+        print
+        try:
+            with open("data\policies.json", 'r') as input_file:
+                policies_list = json.load(input_file)
+        except FileNotFoundError as fe:
+            return("File does not exist")
+        
+        print(policies_list)
+        latest_id = 0
+        for policy in policies_list:
+            latest_id = max(latest_id, int(policy["PolicyID"][3:]))
+
+
+        return "POL"+str(latest_id)
 
     
 
