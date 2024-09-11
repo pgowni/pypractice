@@ -32,9 +32,8 @@ def load_customers():
 def write_customers(data):
     customer_data = []
     
-    for obj in data:
-        # print("Type", type(obj))
-        customer_data.append(obj.to_dict())
+    for customer_obj in data:
+            customer_data.append(customer_obj.to_dict())
     
     try:
         with open("data\customers.json", 'w') as output_file:
@@ -49,7 +48,6 @@ def write_customers(data):
 
 @app.route("/")
 def home_page():
-    print("Here")
     all_customer_obj = load_customers()
     all_customers = []
 
@@ -60,25 +58,29 @@ def home_page():
 
 @app.route("/add_customer",methods=['POST'])
 def add_customer():
-    all_customers = load_customers()
-    all_policies = load_policies()
-    curr_policy_id = IndividualPolicy.curr_policy_id
-    new_policy_id = IndividualPolicy.generate_policy_id()
     new_customer = request.get_json()
-    
+    all_customers = load_customers()
+    curr_policy_id = Policy.generate_policy_id()
+    new_policy_id = "POL" + str(int(curr_policy_id[3:]) + 1)
+   
     for person in all_customers:
         if (person.to_dict()["FirstName"]+ person.to_dict()["LastName"])  == (new_customer["FirstName"]+ new_customer["LastName"]):
+            new_policy_id = curr_policy_id
             return "Cannot add an existing customer. Try updating their existing information instead"
-        
+   
     new_customer["policies"].append(new_policy_id)
-    print("cust", new_customer)
     try:
-        all_customers.append(new_customer)
+        if new_customer["CustomerType"] == "Corporate":
+            all_customers.append(CorporateCustomer.to_obj(new_customer))
+        
+        else:
+            all_customers.append(IndividualCustomer.to_obj(new_customer))
+        
         write_customers(all_customers)
-    except:
-        IndividualPolicy.curr_policy_id = curr_policy_id
+    except Exception as e:
         new_policy_id = curr_policy_id
-        print("Reset", new_policy_id, IndividualPolicy.curr_policy_id)
+        print("Error is that", e.args)
+        return "Failed to add customer"
     else:
         return "Successfully added customer"
 
@@ -157,30 +159,42 @@ def view_policies():
     
     for policy_obj in all_policy_obj:
         all_policies.append(policy_obj.to_dict())    
-    return jsonify(all_policies)
+    return jsonify(all_policies) 
 
-@app.route("/add_policy")
+@app.route("/add_policy", methods=["POST"])
 def add_policy():
-    all_customers = load_customers()
-    all_policies = load_policies()
-    new_policy = request.get_json()
-    new_policy_id = Policy.generate_policy_id(all_policies)
     
-    new_policy["PolicyID"] = new_policy_id
+    all_policies = load_policies()
+    curr_policy_id = Policy.generate_policy_id()
+    new_policy = request.get_json()
+    new_policy_id = "POL" + str(int(curr_policy_id[3:]) + 1)
+    
+    if not new_policy["PolicyID"]:
+        new_policy["PolicyID"] = new_policy_id
 
     # Check if a customer with this policy ID exists
-    customer_found = None
-    for customer in all_customers:
-        if customer["PolicyID"] == new_policy["PolicyID"]:
-            customer_found = customer
-            break
+    # customer_found = None
+    # for customer in all_customers:
+    #     if customer["PolicyID"] == new_policy["PolicyID"]:
+    #         customer_found = customer
+    #         break
 
-    if not customer_found:
-        return "Cannot add policy: No customer associated with this Policy ID"
-
-    all_policies.append(new_policy)
-    write_policies(all_policies)
-
+    # if not customer_found:
+    #     return "Cannot add policy: No customer associated with this Policy ID"
+    
+    if new_policy["PolicyType"] == "Individual":
+         all_policies.append(IndividualPolicy.to_obj(new_policy))
+    
+    else:
+        all_policies.append(CorporatePolicy.to_obj(new_policy))
+    
+    try:
+        write_policies(all_policies)
+    except:
+        return("Could not add policy")
+    else:
+        return ("Successfully added policy")
+        
 
 if __name__ == '__main__':
     app.run(debug=True)
